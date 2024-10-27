@@ -43,6 +43,6 @@ userSchema.pre("save", async function (next) {
   // using to next() to continue the saving process  otherwise the code will stop here !
   next();
 });
-
+// creating a const name user as model and exporting it
 const User = mongoose.model("Users", userSchema);
 export default User;
