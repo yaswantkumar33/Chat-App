@@ -27,7 +27,6 @@ app.use("/api/auth", authRoutes);
 const server = app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
-
 // mongoose db connecting
 mongoose
   .connect(database_url)
