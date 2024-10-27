@@ -9,16 +9,47 @@ import {
   TabsContent,
 } from "../../components/ui/tabs.jsx";
 import { Input } from "../../components/ui/input.jsx";
+import { toast } from "sonner";
+import { apiClient } from "@/lib/api-client";
+import { SIGN_UP_ROUTE } from "@/utils/cosnt";
 
 const Auth = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [confirmpass, setconfirmpass] = useState("");
   const handleLogin = () => {
-    console.log("Login Submitted");
+    console.log("login form submitted");
   };
-  const handleSignup = () => {
-    console.log("Sign up Submitted ");
+  const handleSignup = async () => {
+    console.log("signup form submitted");
+    if (signupValidation()) {
+      const Response = await apiClient.post(SIGN_UP_ROUTE, { email, password });
+      console.log(Response);
+    }
+  };
+  const signupValidation = () => {
+    console.log("sign up validation is called ");
+    if (!email.length) {
+      toast.error("Email Is Required");
+      return false;
+    } else {
+      if (!password.length) {
+        toast.error("Password Is Required");
+        return false;
+      } else {
+        if (!confirmpass.length) {
+          toast.error("Confirm the password  Is Required ! ");
+          return false;
+        } else {
+          if (password != confirmpass) {
+            toast.error("Password And Confrim Password Didn't Match !!");
+            return false;
+          } else {
+            return true;
+          }
+        }
+      }
+    }
   };
   return (
     <div className="h-[100vh] w-[100vw] flex items-center justify-center">
