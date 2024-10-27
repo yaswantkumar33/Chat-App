@@ -2,7 +2,7 @@ import { genSalt } from "bcrypt";
 import mongoose, { mongo } from "mongoose";
 import { genSalt } from "bcrypt";
 import { model } from "./../node_modules/mongoose/types/index.d";
-
+// using mongoose inbuilt userschemma to create a user model
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -36,9 +36,11 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+// using the "pre" to do what has to be done before saving
 userSchema.pre("save", async function (next) {
   const salt = await genSalt();
   this.password = await hash(this.password, salt);
+  // using to next() to continue the saving process  otherwise the code will stop here !
   next();
 });
 
