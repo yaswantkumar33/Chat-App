@@ -1,7 +1,5 @@
-import { genSalt } from "bcrypt";
-import mongoose, { mongo } from "mongoose";
-import { genSalt } from "bcrypt";
-import { model } from "./../node_modules/mongoose/types/index.d";
+import { genSalt, hash } from "bcrypt";
+import mongoose from "mongoose";
 // using mongoose inbuilt userschemma to create a user model
 const userSchema = new mongoose.Schema({
   email: {
@@ -43,6 +41,6 @@ userSchema.pre("save", async function (next) {
   // using to next() to continue the saving process  otherwise the code will stop here !
   next();
 });
-
+// creating a const name user as model and exporting it
 const User = mongoose.model("Users", userSchema);
 export default User;
