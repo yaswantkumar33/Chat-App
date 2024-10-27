@@ -7,7 +7,6 @@ const createToken = (email, userId) => {
     expiresIn: maxTokenAge,
   });
 };
-
 export const signup = async (request, response, next) => {
   try {
     const { email, password } = request.body;
