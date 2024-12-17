@@ -1,0 +1,24 @@
+# Connectify-Social App
+
+# File Strucuture 📂
+
+### Base Structure 
+Client 👤  → which handles the front end react application
+Server 💾 → which handles the backend API responses and database works
+
+## Client Side React App Structure(Vite React App-[version :18.3.1])
+
+public 
+src
+env
+.gitignore
+components.json
+eslint.json
+index.html
+jsconfig.json
+package-lock.json
+package.json
+postcss.config.js
+Readme.md
+tailwind.config.js
+vite.config.js
